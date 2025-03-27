@@ -45,6 +45,12 @@ def main():
         for sprite in drawable:
             sprite.draw(screen)
 
+        for asteroid in asteroids:
+            for shot in shots:
+                if asteroid.collision(shot):
+                    asteroid.split()
+                    shot.kill()
+
         pygame.display.flip()
 
         dt = clock.tick(60) / 1000
